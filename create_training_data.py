@@ -15,7 +15,7 @@ for timeframe in timeframes:
         df = pd.read_sql("SELECT * FROM parent_reply WHERE unix > {} AND parent NOT NULL AND score > 0  ORDER BY unix ASC LIMIT {}".format(last_unix,limit), connection)
         last_unix = df.tail(1)['unix'].values[0]
         cur_length = len(df)
-        if not test_done:
+        if not test_done:   
             with open("test.from",'a',encoding='utf8') as f:
                 for content in df['parent'].values:
                     f.write(content+'\n')
